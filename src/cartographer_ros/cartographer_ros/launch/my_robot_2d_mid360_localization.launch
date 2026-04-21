@@ -1,0 +1,45 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch>
+
+  <!-- 如果启动仿真这部分直接注释，因为gazebo仿真中会加载机器人的模型消息 -->
+  <!-- <param name="robot_description"
+    textfile="$(find cartographer_ros)/urdf/my_robot.xacro" /> -->
+  
+  <!-- <arg name="gui" default="true" /> -->
+  <!-- gui可以控制机器人能够活动的部分，比如说轮子 -->
+  <!-- <param name="use_gui" value="$(arg gui)" />
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher" /> -->
+
+  <!-- 启动cartographer -->
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename my_robot_2d_mid360_localization.lua
+          -start_trajectory_with_default_topics = false
+          -load_state_filename /home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mape.pbstream"
+      output="screen">
+    <remap from="scan" to="scan" />
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+        type="cartographer_occupancy_grid_node" args="-resolution 0.1
+                                                -pure_localization 1" />
+
+</launch>

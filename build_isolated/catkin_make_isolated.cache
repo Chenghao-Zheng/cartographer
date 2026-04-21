@@ -1,0 +1,2 @@
+cartographer_ros/cartographer_ros:cartographer_ros/cartographer_ros_msgs:cartographer_ros/cartographer_rviz
+-G Ninja -DCATKIN_DEVEL_PREFIX=/home/ubuntu/Cartographer/Cartographer_Locatization/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Cartographer/Cartographer_Locatization/install_isolated

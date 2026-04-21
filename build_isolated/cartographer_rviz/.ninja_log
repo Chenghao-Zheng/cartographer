@@ -1,0 +1,27 @@
+# ninja log v5
+0	3	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+0	2230	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+0	2230	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+2230	6037	1776757131043266134	CMakeFiles/cartographer_rviz.dir/cartographer_rviz/ogre_slice.cc.o	daf42eaf039ff4d6
+2230	8542	1776757133547244161	CMakeFiles/cartographer_rviz.dir/cartographer_rviz/drawable_submap.cc.o	f3e226c8b04cb37f
+2230	9018	1776757134023239984	CMakeFiles/cartographer_rviz.dir/cartographer_rviz_autogen/mocs_compilation.cpp.o	85369c69d71d1b4
+2230	11312	1776757136319219836	CMakeFiles/cartographer_rviz.dir/cartographer_rviz/submaps_display.cc.o	117f5ebeae9307d4
+11312	11821	1776757136823215413	/home/ubuntu/Cartographer/Cartographer_Locatization/devel_isolated/cartographer_rviz/lib/libcartographer_rviz.so	81d136fdccfde76
+4	6	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+4	10	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+4	10	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+10	34	0	CMakeFiles/install.util	8eee2a1b21dcd00e
+3	6	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+4	10	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+4	10	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+3	6	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+3	10	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+3	10	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+11	19	0	CMakeFiles/install.util	8eee2a1b21dcd00e
+5	8	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+5	18	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+5	18	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+5	8	0	CMakeFiles/cartographer_rviz_detect_changes	bb480078ab58ef28
+5	16	0	CMakeFiles/cartographer_rviz_autogen	f9bd0ec3e3a1e899
+5	16	0	cartographer_rviz_autogen/mocs_compilation.cpp	f9bd0ec3e3a1e899
+16	30	0	CMakeFiles/install.util	8eee2a1b21dcd00e

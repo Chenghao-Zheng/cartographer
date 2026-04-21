@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="ros_gazebo_control" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- 机器人基坐标系和base_link的变换 -->
+  <link name="footprint"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- 底盘基坐标系 -->
+  <link name="base_link">
+    <inertial>
+    <!-- 空间坐标系，欧拉角 -->
+      <origin xyz="-0.00220382717226197 -2.77555756156289E-16 -0.0265140822306779" rpy="0 0 1.5707" />
+      <!-- 质量 -->
+      <mass value="10.000" />   
+      <!-- 惯性矩阵 -->
+      <inertia
+        ixx="0.0572230045930851"
+        ixy="-6.87004526351033E-11"
+        ixz="0.000395011143970009"
+        iyy="0.104579006027751"
+        iyz="-1.14411298490415E-09"
+        izz="0.158680615936617" />
+    </inertial>
+    <visual>    <!-- 可视化 -->
+      <origin xyz="0 0 0" rpy="0 0 1.5707" />
+      <geometry>
+        <box size="0.500 0.400 0.0525"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1.0 0.423529411765 0.0392156862745 1.0" />    <!-- 颜色设定 1代表不透明 -->
+      </material>
+    </visual>
+    <collision>  <!-- 碰撞矩阵 -->
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.600 0.500 0.0525"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="laser">
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.05" radius="0.03" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="laser" />
+    <origin rpy="0 0 0.785" xyz="0.119 0.154 0.15" />
+  </joint>
+
+  <!-- 添加第二个雷达 -->
+  <link name="laser2">
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.05" radius="0.03" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="laser2_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="laser2" />
+    <origin rpy="0 0 -2.355" xyz="-0.117 -0.159 0.15" />
+    <!-- <origin rpy="0 0 0" xyz="0 0 0.15" /> -->
+  </joint>
+
+  <!-- 左前轮连接 -->
+  <link name="left_front_wheel_link">
+    <inertial>
+      <origin xyz="-2.22044604925031E-16 5.55111512312578E-17 -0.0225" rpy="-1.5708 -0.30431 -1.5707" />
+      <mass value="0.721647747903646" />    <!-- 轮子质量 -->
+      <!-- 惯性矩阵 -->
+      <inertia ixx="0.00123192786633422" ixy="1.89735380184963E-19" ixz="8.49404400619211E-20" iyy="0.00123192786633422" iyz="8.75533839482724E-20" izz="0.00224906487784527" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+      <material name="orange">  <!-- 颜色设定 1代表不透明 -->
+        <color rgba="1.0 0.423529411765 0.0392156862745 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 左前轮关节-->
+  <joint name="left_front_wheel_joint" type="continuous">
+    <origin xyz="0.25 0.20 -0.0265" rpy="-1.5708 -0.30431 -1.5707" />
+    <parent link="base_link" /> <!-- 父连接点 -->
+    <child link="left_front_wheel_link" />  <!-- 子连接点 -->
+    <axis xyz="0 0 -1" />
+  </joint>
+
+  <!-- 右前轮连接 -->
+  <link name="right_front_wheel_link">
+    <inertial>
+      <origin xyz="1.11022302462516E-16 1.11022302462516E-16 -0.0225" rpy="0 0 -1.5707" />
+      <mass value="0.845393856790019" />
+      <inertia
+        ixx="0.00123192786633422"
+        ixy="7.45388993583784E-20"
+        ixz="1.67796661947745E-19"
+        iyy="0.00123192786633422"
+        iyz="-2.53495689109652E-20"
+        izz="0.00224906487784527" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 右前轮关节 -->
+  <joint name="right_front_wheel_joint" type="continuous">
+    <origin xyz="0.25 -0.20 -0.0265" rpy="-1.5708 -0.036627 -1.5707" />
+    <parent link="base_link" />
+    <child link="right_front_wheel_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <!-- 左后轮连接 -->
+  <link name="left_back_wheel_link">
+    <inertial>
+      <origin xyz="0.000156473891360004 0.0134968603558328 -1.22002941108281E-05" rpy="0 0 -1.5707" />
+      <mass value="0.845393836088844" />
+      <inertia
+        ixx="0.00123192786633422"
+        ixy="0"
+        ixz="-5.02055808133134E-20"
+        iyy="0.00123192786633422"
+        iyz="-1.73134637201802E-19"
+        izz="0.00224906487784527" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 左后轮关节 -->
+  <joint name="left_back_wheel_joint" type="continuous">
+    <origin xyz="-0.25 0.20 -0.0265" rpy="-1.5708 1.04 -1.5707" />
+    <parent link="base_link" />
+    <child link="left_back_wheel_link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+
+  <!-- 右后轮连接 -->
+  <link name="right_back_wheel_link">
+    <inertial>
+      <origin xyz="-2.77555756156289E-17 1.2490009027033E-16 -0.0225" rpy="0 0 -1.5707" />
+      <mass value="0.845393867160532" />
+      <inertia
+        ixx="0.00123192786633422"
+        ixy="-5.42101086242752E-20"
+        ixz="5.30406348890529E-20"
+        iyy="0.00123192786633422"
+        iyz="2.07409588350469E-20"
+        izz="0.00224906487784527" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.045" radius="0.07625"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右后轮关节 -->
+  <joint name="right_back_wheel_joint" type="continuous">
+    <origin xyz="-0.25 -0.20 -0.0265" rpy="-1.5708 0.381 -1.5707" />
+    <parent link="base_link" />
+    <child link="right_back_wheel_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <!-- 底盘设定成灰色 -->
+  <gazebo reference="base_link" >
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <!-- 轮子设定为黑色 -->
+  <!-- 左前轮 -->
+  <gazebo reference="left_front_wheel_link" >
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <!-- 左后轮 -->
+  <gazebo reference="left_back_wheel_link" >
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <!-- 右前轮 -->
+  <gazebo reference="right_front_wheel_link" >
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <!-- 右后轮 -->
+  <gazebo reference="right_back_wheel_link" >
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+</robot>
+

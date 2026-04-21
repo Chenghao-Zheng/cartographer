@@ -1,0 +1,19 @@
+<launch>
+  <arg name="pbstream" default="/home/ubuntu/carto_map.pbstream"/>
+
+  <!-- 运行cartographer_node：加载pbstream并冻结旧子图（重定位/纯定位） -->
+  <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" output="screen"
+        args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename  my_robot_2d.lua
+          -load_state_filename $(arg pbstream)
+          -load_frozen_state true
+        " />
+
+  <!-- 发布 /map（OccupancyGrid） -->
+  <node pkg="cartographer_ros" type="cartographer_occupancy_grid_node"
+        name="cartographer_occupancy_grid_node" output="screen">
+    <param name="resolution" value="0.05"/>
+    <param name="publish_period_sec" value="1.0"/>
+  </node>
+</launch>

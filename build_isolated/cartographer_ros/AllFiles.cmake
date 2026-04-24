@@ -152,6 +152,9 @@
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mape.pbstream
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mape.pgm
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mape.yaml
+#/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mapf.pbstream
+#/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mapf.pgm
+#/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mapf.yaml
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_map.pbstream
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_map.pgm
 #/home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_map.yaml

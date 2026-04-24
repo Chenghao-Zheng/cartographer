@@ -31,7 +31,7 @@
           -configuration_directory $(find cartographer_ros)/configuration_files
           -configuration_basename my_robot_2d_localization.lua
           -start_trajectory_with_default_topics = false
-          -load_state_filename /home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mape.pbstream"
+          -load_state_filename /home/ubuntu/Cartographer/Cartographer_Locatization/src/cartographer_ros/cartographer_ros/map/carto_mapf.pbstream"
       output="screen">
     <remap from="scan" to="scan" />
   </node>
